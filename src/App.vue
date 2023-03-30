@@ -1,13 +1,8 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-    <div class="wrapper">
+    <div class="text-red-700 flex">
       <HelloWorld msg="You did it!" />
 
       <nav>
@@ -19,6 +14,23 @@ import HelloWorld from './components/HelloWorld.vue'
 
   <RouterView />
 </template>
+
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+import HelloWorld from './components/HelloWorld.vue'
+// import {db} from '@/firebase'
+import { useFirestore } from 'vuefire'
+import { useDatabaseList } from 'vuefire'
+import { ref as dbRef } from 'firebase/database'
+
+// console.log(db);
+// console.log(firebaseApp);
+const db = useFirestore()
+// console.log(db);
+// const todos = useDatabaseList(dbRef(db, 'todos'))
+console.log(useDatabaseList().value);
+</script>
+
 
 <style scoped>
 header {
